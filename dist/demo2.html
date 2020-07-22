@@ -21,14 +21,20 @@
       default: false
     }
   },
-  template: "\n        <li>\n          <span v-if=\"!del\">{{title}}</span>\n          <span v-else style=\"color: red\">{{title}}</span>\n          <button v-show=\"!del\">\u5220\u9664</button>\n        </li>\n      ",
+  template: "\n        <li>\n          <span v-if=\"!del\">{{title}}</span>\n          <span v-else style=\"color: red\">{{title}}</span>\n          <button v-show=\"!del\" @click=\"handleClick\">\u5220\u9664</button>\n        </li>\n      ",
   data: function data() {
     return {};
   },
-  methods: {}
+  methods: {
+    handleClick: function handleClick(e) {
+      e.stopPropagation();
+      console.log('点击删除按钮');
+      this.$emit('delete', this.title);
+    }
+  }
 });
 Vue.component('todo-list', {
-  template: "\n        <ul>\n          <todo-item v-for=\"item in list\" :title=\"item.title\" :del=\"item.del\"></todo-item>\n        </ul>\n      ",
+  template: "\n        <ul>\n          <todo-item @delete=\"handleDelete\" v-for=\"item in list\" :title=\"item.title\" :del=\"item.del\"></todo-item>\n        </ul>\n      ",
   data: function data() {
     return {
       list: [{
@@ -39,6 +45,11 @@ Vue.component('todo-list', {
         del: false
       }]
     };
+  },
+  methods: {
+    handleDelete: function handleDelete(val) {
+      console.log('handleDelete', val);
+    }
   }
 });
 var vm = new Vue({
