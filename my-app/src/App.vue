@@ -55,36 +55,38 @@
 <template>
   <div id="app">
     <a-tabs>
-      <a-tab-pane key="Computed" tab="计算属性">
-        <Computed />
+      <a-tab-pane key="clock" tab="时钟">
+        <button @click="destroyClock = !destroyClock">
+          {{ destroyClock ? "加载时钟" : "销毁时钟"}}
+        </button>
+        <Clock v-if="!destroyClock"/>
       </a-tab-pane>
-      <a-tab-pane key="Watch" tab="侦听器">
-        <Watch />
-      </a-tab-pane>
-      <a-tab-pane key="vs" tab="计算属性 vs 侦听器">
-        <Computed1 />
-        <br />
-        <Watch1 />
-      </a-tab-pane>
-      <a-tab-pane key="Watch1_pro" tab="防抖版">
-        <WatchPro />
+      <a-tab-pane key="Functional" tab="函数式组件">
+        <Functional :name="name"/>
+        <TempVar
+          :var1="`hello ${name}`"
+          :var2="destroyClock ? 'hello vue' : 'hello world'">
+          <template v-slot="{var1,var2}">{{ var1 }} {{ var2 }}</template>
+        </TempVar>
       </a-tab-pane>
     </a-tabs>
   </div>
 </template>
 <script>
-  import Computed from "../src/components/Computed";
-  import Computed1 from "../src/components/Computed1";
-  import Watch from "../src/components/Watch";
-  import Watch1 from "../src/components/Watch1";
-  import WatchPro from "../src/components/Watch1_pro";
+  import Clock from "../src/components/Clock";
+  import Functional from "../src/components/Functional";
+  import TempVar from '../src/components/TempVar'
   export default {
-    components: {
-      Computed,
-      Computed1,
-      Watch,
-      Watch1,
-      WatchPro
+    components:{
+      Clock,
+      Functional,
+      TempVar
+    },
+    data(){
+      return{
+        destroyClock: false,
+        name:"vue"
+      };
     }
   };
 </script>
