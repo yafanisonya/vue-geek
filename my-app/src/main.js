@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Vuex from 'vuex'
+import Vuex from './min-vuex'
 import Antd from "ant-design-vue"
 import App from './App.vue'
 import 'ant-design-vue/dist/antd.css'
@@ -17,21 +17,22 @@ const store = new Vuex.Store({
       state.count ++
     }
   },
-  actions:{
-    increment({commit}){
-      setTimeout(()=>{
-        commit('increment')
-      },3000)
-    }
-  },
-  getters:{
-    doubleCount(state){
-      return state.count * 2
-    }
-  }
+  // actions:{
+  //   increment({commit}){
+  //     setTimeout(()=>{
+  //       commit('increment')
+  //     },3000)
+  //   }
+  // },
+  // getters:{
+  //   doubleCount(state){
+  //     return state.count * 2
+  //   }
+  // }
 })
+Vue.prototype.$store = store
 
 new Vue({
-  store,
+  //store,
   render: h => h(App),
 }).$mount('#app')
