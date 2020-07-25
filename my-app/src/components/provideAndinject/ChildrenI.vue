@@ -1,16 +1,15 @@
-<template>
-  <div>$END$</div>
+<template functional>
+  <div class="border2">
+    <h3 :style="{color: injections.theme.color}">I节点</h3>
+  </div>
 </template>
 
-<script lang="ts">
-  import Vue from 'vue';
-  import {Component} from 'vue-property-decorator';
-
-  @Component
-  export default class ChildrenI extends Vue {
+<script>
+  export default {
+    inject:{
+      theme:{
+        default:()=>({})
+      }
+    }
   }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

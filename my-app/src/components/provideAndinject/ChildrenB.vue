@@ -1,16 +1,5 @@
-<template>
-  <div>$END$</div>
+<template functional>
+  <div class="border1">
+    <h2>B节点</h2>
+  </div>
 </template>
-
-<script lang="ts">
-  import Vue from 'vue';
-  import {Component} from 'vue-property-decorator';
-
-  @Component
-  export default class ChildrenB extends Vue {
-  }
-</script>
-
-<style lang="scss" scoped>
-
-</style>

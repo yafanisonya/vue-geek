@@ -12,7 +12,7 @@
 import Vue from "vue";
 import ChildrenB from "./ChildrenB";
 import ChildrenC from "./ChildrenC";
-import ChildrenD from './ChildrenD'
+import ChildrenD from './ChildrenD';
   export default {
     components:{
       ChildrenB,
@@ -36,5 +36,5 @@ import ChildrenD from './ChildrenD'
         }
       }
     }
-  }
+  };
 </script>

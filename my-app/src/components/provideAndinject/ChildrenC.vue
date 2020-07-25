@@ -1,16 +1,24 @@
 <template>
-  <div>$END$</div>
+  <div class="border1">
+    <h2>C 节点</h2>
+    <ChildrenE/>
+    <ChildrenF/>
+  </div>
 </template>
-
-<script lang="ts">
-  import Vue from 'vue';
-  import {Component} from 'vue-property-decorator';
-
-  @Component
-  export default class ChildrenC extends Vue {
+<script>
+  import ChildrenE from "./ChildrenE"
+  import ChildrenF from "./ChildrenF"
+  export default {
+    components:{
+      ChildrenF,
+      ChildrenE
+    },
+    provide(){
+      return{
+        theme:{
+          color:"green"
+        }
+      };
+    }
   }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

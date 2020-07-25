@@ -1,16 +1,43 @@
 <template>
-  <div>$END$</div>
+  <div class="border">
+    <h1>A 节点</h1>
+    <button @click="()=> changeColor()">改变color</button>
+    <ChildrenB />
+    <ChildrenC />
+    <ChildrenD />
+  </div>
 </template>
 
-<script lang="ts">
-  import Vue from 'vue';
-  import {Component} from 'vue-property-decorator';
-
-  @Component
-  export default class ChildrenA extends Vue {
-  }
+<script>
+  import ChildrenB from "./ChildrenB";
+  import ChildrenC from "./ChildrenC";
+  import ChildrenD from "./ChildrenD";
+  export default {
+    components:{
+      ChildrenB,
+      ChildrenC,
+      ChildrenD
+    },
+    provide(){
+      return{
+        theme:{
+          color: this.color
+        }
+      };
+    },
+    data(){
+      return{
+        color:'blue'
+      };
+    },
+    methods:{
+      changeColor(color){
+        if(color){
+          this.color = color;
+        }else{
+          this.color = this.color === "blue"?"red":"blue";
+        }
+      }
+    }
+  };
 </script>
-
-<style lang="scss" scoped>
-
-</style>

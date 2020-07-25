@@ -50,32 +50,21 @@
 <!--</script>-->
 
 <template>
-  <div>
-    <a-tabs>
-      <a-tab-pane key="Directives" tab="内置指令">
-        <Directives/>
-      </a-tab-pane>
-      <a-tab-pane key="CustomerDirectives" tab="自定义指令">
-        <CustomerDirectives/>
-      </a-tab-pane>
-    </a-tabs>
+  <div id="app">
+    {{count}}
+    <br>
+    {{$store.getters.doubleCount }}
+    <button @click="$store.commit('increment')">count++</button>
+    <button @click="$store.dispatch('increment')">count++</button>
   </div>
 </template>
-
-<script lang="ts">
-
-  import Directives from './components/Directives.vue';
-  import CustomerDirectives from './components/CustomerDirectives.vue';
-
+<script>
   export default{
-    components:{
-      Directives,
-      CustomerDirectives
+    name:'app',
+    computed:{
+      count(){
+        return this.$store.state.count
+      }
     }
   }
 </script>
-
-<style lang="scss" scoped>
-
-</style>
-

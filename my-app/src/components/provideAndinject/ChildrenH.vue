@@ -1,16 +1,10 @@
 <template>
-  <div>$END$</div>
+  <div class="border2">
+    <h3>H 节点</h3>
+  </div>
 </template>
 
-<script lang="ts">
-  import Vue from 'vue';
-  import {Component} from 'vue-property-decorator';
-
-  @Component
-  export default class ChildrenH extends Vue {
+<script>
+  export default {
   }
 </script>
-
-<style lang="scss" scoped>
-
-</style>
